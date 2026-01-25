@@ -6,7 +6,10 @@
     "build": "lezer-generator src/syntax.grammar -o src/parser && rollup -c",
     "build-debug": "lezer-generator src/syntax.grammar --names -o src/parser && rollup -c",
     "test": "mocha test/test.js",
-    "test:w3c": "node test/w3c-sparql12.js",
+    "test:w3c": "node test/w3c-sparql10.js && node test/w3c-sparql11.js && node test/w3c-sparql12.js",
+    "test:w3c:10": "node test/w3c-sparql10.js",
+    "test:w3c:11": "node test/w3c-sparql11.js",
+    "test:w3c:12": "node test/w3c-sparql12.js",
     "release": "release-it"
   },
   "type": "module",

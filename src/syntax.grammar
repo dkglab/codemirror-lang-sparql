@@ -369,7 +369,7 @@ PathEltOrInverse {
 }
 
 PathMod {
-  ( '?' | '*' | '+' )
+  ( '?' | '*' | '+' | '{' ( Integer ( ',' Integer? )? | ',' Integer ) '}' )
 }
 
 PathPrimary {
@@ -743,11 +743,15 @@ A_predicate {
   }
 
   Keyword {
-    $[_a-zA-Z\u00A1-\u00ff]+
+    $[_a-zA-Z\u00A1-\u00ff] $[_a-zA-Z0-9\u00A1-\u00ff]*
   }
   
   IriRef {
-    '<' (![<>"{}|^`\\\u{0000}-\u{0020}] | $[])* '>'
+    '<' (![<>"{}|^`\\\u{0000}-\u{0020}] | Uchar)* '>'
+  }
+
+  Uchar {
+    '\\u' Hex Hex Hex Hex | '\\U' Hex Hex Hex Hex Hex Hex Hex Hex
   }
 
   Pname_ns {
