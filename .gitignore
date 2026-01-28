@@ -4,3 +4,4 @@ package-lock.json
 /src/parser.js
 /src/parser.terms.js
 /src/*.d.ts
+/.sprite
